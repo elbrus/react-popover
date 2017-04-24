@@ -98,6 +98,7 @@ var Popover = (0, _react.createClass)({
     isOpen: _react.PropTypes.bool,
     onOuterAction: _react.PropTypes.func,
     enterExitTransitionDurationMs: _react.PropTypes.number,
+    minScrollRefreshIntervalMs: _react.PropTypes.number,
     className: _react.PropTypes.string,
     style: _react.PropTypes.object
   },
@@ -110,6 +111,7 @@ var Popover = (0, _react.createClass)({
       isOpen: false,
       onOuterAction: function noOperation() {},
       enterExitTransitionDurationMs: 500,
+      minScrollRefreshIntervalMs: 200,
       children: null,
       refreshIntervalMs: 200
     };
@@ -152,6 +154,7 @@ var Popover = (0, _react.createClass)({
 
     var pickerSettings = {
       preferPlace: this.props.preferPlace,
+      minScrollRefreshIntervalMs: this.props.minScrollRefreshIntervalMs,
       place: this.props.place
     };
 
@@ -355,7 +358,7 @@ var Popover = (0, _react.createClass)({
     this.containerEl.style[jsprefix('Transform')] = this.containerEl.style.transform;
   },
   trackPopover: function trackPopover() {
-    var minScrollRefreshIntervalMs = 200;
+    var minScrollRefreshIntervalMs = this.props.minScrollRefreshIntervalMs;
     var minResizeRefreshIntervalMs = 200;
 
     /* Get references to DOM elements. */
